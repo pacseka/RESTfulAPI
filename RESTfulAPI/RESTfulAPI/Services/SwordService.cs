@@ -64,8 +64,9 @@ namespace RESTfulAPI.Services
             }
 
             sword = _mapper.Map(swordDto, sword);
+            sword.BlackSmithId = swordDto.BlackSmithId;
 
-            _swordContext.Update(sword);
+            //_swordContext.Swords.Update(sword);
             await _swordContext.SaveChangesAsync();
 
             return swordDto as SwordDto;

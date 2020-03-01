@@ -25,7 +25,7 @@ namespace RESTfulAPI.Services
 
         public async Task<BlackSmithDto> GetAsync(Guid id)
         {
-            var blackSmith = await _swordContext.BlackSimths
+            var blackSmith = await _swordContext.BlackSmiths
                 .Where(x => x.Id == id)
                 .ProjectTo<BlackSmithDto>(_mapper.ConfigurationProvider)
                 .SingleOrDefaultAsync();
@@ -39,7 +39,7 @@ namespace RESTfulAPI.Services
         {
             var mappedFilter = _mapper.Map<Expression<Func<BlackSmith, bool>>>(filter);
 
-            var blackSmiths = await _swordContext.BlackSimths
+            var blackSmiths = await _swordContext.BlackSmiths
                 .Where(mappedFilter)
                 .ProjectTo<BlackSmithDto>(_mapper.ConfigurationProvider)
                 .ToListAsync();
@@ -51,7 +51,7 @@ namespace RESTfulAPI.Services
         {
             var blackSmith = _mapper.Map<BlackSmith>(blackSmithDto);
 
-            await _swordContext.BlackSimths.AddAsync(blackSmith);
+            await _swordContext.BlackSmiths.AddAsync(blackSmith);
 
             return blackSmithDto;
 
@@ -59,7 +59,7 @@ namespace RESTfulAPI.Services
 
         public async Task<BlackSmithDto> UpdateAsync(IBlackSmithUpdate blackSmithDto)
         {
-            var blackSmith = await _swordContext.BlackSimths.FirstOrDefaultAsync(x => x.Id == blackSmithDto.Id);
+            var blackSmith = await _swordContext.BlackSmiths.FirstOrDefaultAsync(x => x.Id == blackSmithDto.Id);
 
             if (blackSmith == null)
             {
@@ -68,7 +68,7 @@ namespace RESTfulAPI.Services
 
             blackSmith = _mapper.Map(blackSmithDto, blackSmith);
 
-            _swordContext.Update(blackSmith);
+            _swordContext.BlackSmiths.Update(blackSmith);
             await _swordContext.SaveChangesAsync();
 
             blackSmithDto = _mapper.Map<BlackSmithDto>(blackSmith);
@@ -78,9 +78,9 @@ namespace RESTfulAPI.Services
 
         public async Task<bool> DeleteAsync(Guid id)
         {
-            var blackSmith = await _swordContext.BlackSimths.SingleOrDefaultAsync(x => x.Id == id);
+            var blackSmith = await _swordContext.BlackSmiths.SingleOrDefaultAsync(x => x.Id == id);
 
-            _swordContext.BlackSimths.Remove(blackSmith);
+            _swordContext.BlackSmiths.Remove(blackSmith);
 
             return await _swordContext.SaveChangesAsync() >= 0;
         }

@@ -9,7 +9,7 @@ namespace RESTfulAPI.Services
     {
         public static void SeedData(SwordContext context)
         {
-            context.BlackSimths.AddRange(new BlackSmith
+            context.BlackSmiths.AddRange(new BlackSmith
             {
                 Description = "Középföldei kovácsmester",
                 Id = Guid.Parse("f27aaaa2-0cdd-4fb6-a2fc-a942289705f2"),

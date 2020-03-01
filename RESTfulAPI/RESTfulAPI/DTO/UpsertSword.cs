@@ -13,14 +13,13 @@ namespace RESTfulAPI.DTO
         [Required]
         public string Type { get; set; }
 
-        [Required]
-        public Guid BlackSimthId { get; set; }
+        public Guid? BlackSmithId { get; set; }
 
         public decimal WeightKg { get; set; }
 
         public int LengthCm { get; set; }
 
-        public DateTime CreatedDate { get; set; }
+        public DateTime? CreatedDate { get; set; }
 
         public Status Status { get; set; }
     }

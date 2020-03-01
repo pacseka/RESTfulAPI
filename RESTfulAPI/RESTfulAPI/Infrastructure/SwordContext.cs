@@ -7,7 +7,7 @@ namespace RESTfulAPI.Infrastructure
     public class SwordContext : DbContext
     {
         public DbSet<Sword> Swords { get; set; }
-        public DbSet<BlackSmith> BlackSimths { get; set; }
+        public DbSet<BlackSmith> BlackSmiths { get; set; }
 
         public SwordContext()
         {
