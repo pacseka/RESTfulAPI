@@ -6,8 +6,6 @@ namespace RESTfulAPI.Dto
     public interface ISwordUpdate
     {
         Guid? BlackSmithId { get; set; }
-        string BlackSmithName { get; set; }
-        string BlackSmithRace { get; set; }
         DateTime? CreatedDate { get; set; }
         string Description { get; set; }
         Guid Id { get; set; }

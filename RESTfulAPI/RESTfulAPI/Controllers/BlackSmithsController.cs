@@ -76,7 +76,7 @@ namespace RESTfulAPI.Controllers
 
             if (!TryValidateModel(blackSmith))
             {
-                return BadRequest(ModelState);
+                return BadRequest();
             }
 
             blackSmith = await _blackSmithService.UpdateAsync(blackSmith);

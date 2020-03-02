@@ -65,11 +65,13 @@ namespace RESTfulAPI.Services
 
             sword = _mapper.Map(swordDto, sword);
             sword.BlackSmithId = swordDto.BlackSmithId;
+            sword.BlackSmith = _swordContext.BlackSmiths.FirstOrDefault(x => x.Id == swordDto.BlackSmithId);
 
+            _swordContext.Swords.Attach(sword);
             //_swordContext.Swords.Update(sword);
             await _swordContext.SaveChangesAsync();
 
-            return swordDto as SwordDto;
+            return _mapper.Map<SwordDto>(sword);
         }
 
         public async Task<bool> DeleteAsync(Guid id)
